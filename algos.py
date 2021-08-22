@@ -101,8 +101,9 @@ def display_lev_changes(new_words):
     		new = new_words[i][0]
     		origin = new_words[i][1]
     		print("tttttttttttttt ", new, origin)
-    		s.append("Origin Word: ,"+ new + " New Word: " + origin)
+    		s.append("Origin Word: "+ new + " || New Word: " + origin)
     return s
     		
+    		 
     		 
     
