@@ -186,4 +186,3 @@ open the web in the main page:
 
 ![alt text](https://github.com/MoranOshia/Machine_Translation/blob/main/images/image/translate_2.png)
 
-"# MT" 
