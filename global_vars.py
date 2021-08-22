@@ -8,13 +8,13 @@ _device_inf = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 _hidden_size = 256
 
-_MAX_LENGTH = 15
+_MAX_LENGTH = 10
 
 _SOS_token = 0
 
 _EOS_token = 1
 
-# Pre Process vars
+# Languages
 
 _lang1 = 'heb'
 
@@ -24,13 +24,16 @@ _reverse = True
 
 # Training vars
 
-_dictionary_name = "dictionaries/heb-arm-dictionary.pickle"
+if _reverse:
+    _dictionary_name = 'dictionaries/'+_lang2+'-'+_lang1+'-dictionary.pickle'
+else:
+    _dictionary_name = 'dictionaries/'+_lang1 + '-' + _lang2 + '-dictionary.pickle'
 
 _teacher_forcing_ratio = 0.5
 
-_n_iters = 75000
+_n_iters = 1000
 
-_print_every= 50
+_print_every= 500
 
 _plot_every=100
 
@@ -44,4 +47,8 @@ _pickle_name = ""
 
 # Inference vars
 
-_model_name = "model/fra-eng-model.pickle"
+if _reverse:
+    _model_name =  'model/'+_lang2+'-'+_lang1+'-model.pickle'
+else:
+    _model_name =  'model/' + _lang1 + '-' + _lang2 + '-model.pickle'
+
