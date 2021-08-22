@@ -2,7 +2,7 @@ from flask import Flask, render_template, url_for
 from flask import request
 from pickle_funcs import load_pickle
 from pre_process import PreProcessData,Lang
-from training import TrainingObject
+from training import TrainingObject,train_obj
 from models import EncoderRNN,AttnDecoderRNN
 from algos import get_choosen_languages,translate,closest_sentence,display_lev_changes
 
@@ -11,6 +11,11 @@ app = Flask(__name__,template_folder='Templates')
 @app.route("/", methods=['GET','POST'])
 @app.route("/home", methods=['GET','POST'])
 def home():
+	choosen_lan = ''
+	result = ''
+	lev_changes = ''
+	changes = ''
+
 	if request.method == 'POST':
 		choosen_lan = request.form.get('Lang')
 		lang1 , lang2 = get_choosen_languages(choosen_lan)
@@ -26,7 +31,10 @@ def home():
 		print(changes)
 		result=translate(pickle_dict_name,pickle_model_name,sen)
         	#result = evaluate(pickle_dict,encoder,decoder,sen)
-		return render_template('index.html', word=result,lev=lev_changes,changes=changes)
+		return render_template('index.html', word=result,lev=lev_changes,changes=changes,choosen_lan=choosen_lan)
+
+	if request.method == 'GET':
+		return render_template('index.html', word=result, lev=lev_changes, changes=changes,choosen_lan=choosen_lan)
 
 	return render_template('index.html', word="")
 
