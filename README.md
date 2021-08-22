@@ -3,11 +3,11 @@
 
 ## Members:
 
-Moran Oshia - 313292633
+Moran Oshia 
 
-Alex Chagan - 206262123
+Alex Chagan
 
-Raam Banin - 204702344
+Raam Banin
 
 
 
